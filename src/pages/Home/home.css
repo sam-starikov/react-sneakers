@@ -1,0 +1,19 @@
+.slider {
+}
+
+.slider__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background: #f4efe9;
+}
+
+.slider__title {
+	font-size: 38px;
+	font-weight: 700;
+}
+
+.slider__title span {
+	color: #8bb43c;
+}
