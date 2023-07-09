@@ -1,5 +1,4 @@
 .header {
-	margin-bottom: 45px;
 }
 .header__container {
 	display: flex;
@@ -16,6 +15,7 @@
 
 .header__logo img {
 	margin-right: 16px;
+	cursor: pointer;
 }
 
 .header__line {
@@ -50,7 +50,12 @@
 	color: #5c5c5c;
 	font-weight: 600;
 	font-size: 14px;
+	cursor: pointer;
 }
 .menu__item-cart img {
 	margin-right: 10px;
+}
+
+.menu__item-cart {
+	cursor: pointer;
 }

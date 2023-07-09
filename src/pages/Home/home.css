@@ -1,19 +1,37 @@
-.slider {
+.home {
+	padding-top: 46px;
 }
 
-.slider__container {
+.home__top-section {
+	padding-top: 40px;
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	border-radius: 20px;
-	background: #f4efe9;
+	justify-content: space-between;
 }
 
-.slider__title {
-	font-size: 38px;
+.home__title {
+	color: #000;
+	font-size: 32px;
 	font-weight: 700;
 }
 
-.slider__title span {
-	color: #8bb43c;
+.home__search {
+	display: flex;
+	align-items: center;
+	width: 250px;
+	height: 45px;
+	padding: 20px 15px;
+	border-radius: 10px;
+	border: 1px solid #f3f3f3;
+	color: #c4c4c4;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+.home__search img {
+	margin-right: 10px;
+}
+
+.card-section {
+	padding-top: 40px;
 }

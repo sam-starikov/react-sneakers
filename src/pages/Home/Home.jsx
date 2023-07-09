@@ -1,26 +1,21 @@
 import './home.css'
 
+import Slider from '../../components/Slider/Slider'
+import Card from '../../components/Card/Card'
+
 const Home = () => {
 	return (
-		<div className='slider'>
-			<div className='slider__container container'>
-				<div>
-					<h3 className='slider__title'>
-						<span>Stan Smith,</span>
-						Forever!
-					</h3>
-					<button>
-						<img src='./img/slider-btn.svg' alt='button buy now' />
-					</button>
+		<div className='home'>
+			<Slider />
+			<div className='home__top-section container'>
+				<h1 className='home__title'>Все кроссовки</h1>
+				<div className='home__search'>
+					<img src='./img/search.svg' alt='search' />
+					<input type='text' placeholder='Поиск...' />
 				</div>
-				<div className='slider__image'>
-					<img
-						height={300}
-						width={641}
-						src='./img/slider-img.png'
-						alt='slider'
-					/>
-				</div>
+			</div>
+			<div className='card-section container'>
+				<Card />
 			</div>
 		</div>
 	)
