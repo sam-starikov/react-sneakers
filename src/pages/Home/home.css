@@ -1,21 +1,21 @@
-.home {
-	padding-top: 46px;
+.home__slider {
+	margin-bottom: 40px;
 }
 
 .home__top-section {
-	padding-top: 40px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	margin-bottom: 40px;
 }
 
 .home__title {
-	color: #000;
 	font-size: 32px;
 	font-weight: 700;
 }
 
 .home__search {
+	position: relative;
 	display: flex;
 	align-items: center;
 	width: 250px;
@@ -24,14 +24,22 @@
 	border-radius: 10px;
 	border: 1px solid #f3f3f3;
 	color: #c4c4c4;
-	font-size: 14px;
 	overflow: hidden;
 }
 
-.home__search img {
+.search__search-image {
 	margin-right: 10px;
 }
 
-.card-section {
-	padding-top: 40px;
+.search__remove-image {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	cursor: pointer;
+}
+
+.home__content {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
 }

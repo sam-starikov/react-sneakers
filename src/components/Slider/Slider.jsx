@@ -2,7 +2,7 @@ import './slider.css'
 
 const Slider = () => {
 	return (
-		<div className='slider container'>
+		<div className='home__slider slider'>
 			<div className='slider__container '>
 				<div className='slider__left-section'>
 					<div className='slider__logo'>

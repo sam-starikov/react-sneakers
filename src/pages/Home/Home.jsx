@@ -3,19 +3,58 @@ import './home.css'
 import Slider from '../../components/Slider/Slider'
 import Card from '../../components/Card/Card'
 
-const Home = () => {
+import { useState } from 'react'
+
+const Home = ({ items }) => {
+	const [searchValue, setSearchValue] = useState('')
+
+	const onChangeInput = event => {
+		setSearchValue(event.target.value)
+	}
+
 	return (
-		<div className='home'>
+		<div className='home container'>
 			<Slider />
-			<div className='home__top-section container'>
-				<h1 className='home__title'>Все кроссовки</h1>
-				<div className='home__search'>
-					<img src='./img/search.svg' alt='search' />
-					<input type='text' placeholder='Поиск...' />
+			<div className='home__top-section'>
+				<h1 className='home__title'>
+					{searchValue
+						? `По запросу '${searchValue}' найденно ${items.length} шт.`
+						: 'Все кроссовки'}
+				</h1>
+				<div className='home__search search'>
+					<img
+						className='search__search-image'
+						src='./img/search.svg'
+						alt='search'
+					/>
+					{searchValue && (
+						<img
+							className='search__remove-image'
+							src='./img/btn-remove.svg'
+							alt='remove'
+							onClick={() => setSearchValue('')}
+						/>
+					)}
+					<input
+						className='search__input'
+						onChange={onChangeInput}
+						value={searchValue}
+						type='text'
+						placeholder='Поиск...'
+					/>
 				</div>
 			</div>
-			<div className='card-section container'>
-				<Card />
+			<div className='home__content'>
+				{items
+					.filter(obj => obj.title.toLowerCase().includes(searchValue))
+					.map((obj, inx) => (
+						<Card
+							key={inx}
+							image={obj.img}
+							title={obj.title}
+							price={obj.price}
+						/>
+					))}
 			</div>
 		</div>
 	)
