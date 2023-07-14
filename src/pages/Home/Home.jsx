@@ -5,7 +5,7 @@ import Card from '../../components/Card/Card'
 
 import { useState } from 'react'
 
-const Home = ({ items }) => {
+const Home = ({ items, addToCart }) => {
 	const [searchValue, setSearchValue] = useState('')
 
 	const onChangeInput = event => {
@@ -46,14 +46,11 @@ const Home = ({ items }) => {
 			</div>
 			<div className='home__content'>
 				{items
-					.filter(obj => obj.title.toLowerCase().includes(searchValue))
+					.filter(obj =>
+						obj.title.toLowerCase().includes(searchValue.toLowerCase())
+					)
 					.map((obj, inx) => (
-						<Card
-							key={inx}
-							image={obj.img}
-							title={obj.title}
-							price={obj.price}
-						/>
+						<Card key={inx} {...obj} onPlus={obj => addToCart(obj)} />
 					))}
 			</div>
 		</div>

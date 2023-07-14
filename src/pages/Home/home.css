@@ -12,6 +12,7 @@
 .home__title {
 	font-size: 32px;
 	font-weight: 700;
+	margin-right: 12px;
 }
 
 .home__search {

@@ -2,7 +2,7 @@ import './card.css'
 
 import { useState } from 'react'
 
-const Card = ({ image, title, price }) => {
+const Card = ({ id, title, img, price, onPlus }) => {
 	const [isFavorite, setIsFavorite] = useState(false)
 	const [isAdded, setIsAdded] = useState(false)
 
@@ -11,6 +11,7 @@ const Card = ({ image, title, price }) => {
 	}
 
 	const addToCart = () => {
+		onPlus({ id, title, img, price })
 		setIsAdded(!isAdded)
 	}
 
@@ -24,9 +25,9 @@ const Card = ({ image, title, price }) => {
 					src={isFavorite ? './img/liked.svg' : './img/unliked.svg'}
 					alt='like'
 				/>
-				<img className='card__img' height={112} src={image} alt='sneakers' />
+				<img className='card__img' height={112} src={img} alt='sneakers' />
 				<h3 className='card__title'>{title}</h3>
-				<div className='card__bottom'>
+				<div className='card__bottom-section'>
 					<div className='card__price'>
 						<p>Цена:</p>
 						<b>{price}p.</b>

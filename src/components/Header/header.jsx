@@ -1,10 +1,10 @@
 import './header.css'
 
-const Header = () => {
+const Header = ({ openCart, totalAmount }) => {
 	return (
 		<header className='header'>
 			<div className='header__container container'>
-				<div className='header__logo-block'>
+				<div className='header__logo-section'>
 					<img className='header__logo' src='./img/logo.svg' alt='logo' />
 					<div className='header__title-block'>
 						<h3 className='header__title'>REACT SNEAKERS</h3>
@@ -14,9 +14,9 @@ const Header = () => {
 
 				<div className='header__menu menu'>
 					<ul className='menu__list'>
-						<li className='menu__item'>
+						<li className='menu__item' onClick={openCart}>
 							<img className='menu__icon' src='./img/cart.svg' alt='cart' />
-							<span className='menu__price'>12.000 руб.</span>
+							<span className='menu__price'>{totalAmount} руб.</span>
 						</li>
 						<li className='menu__item'>
 							<img
