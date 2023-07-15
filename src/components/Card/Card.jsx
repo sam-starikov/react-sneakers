@@ -2,9 +2,8 @@ import './card.css'
 
 import { useState } from 'react'
 
-const Card = ({ id, title, img, price, onPlus }) => {
+const Card = ({ id, title, img, price, onPlus, onAdded = false }) => {
 	const [isFavorite, setIsFavorite] = useState(false)
-	const [isAdded, setIsAdded] = useState(false)
 
 	const onFavorite = () => {
 		setIsFavorite(!isFavorite)
@@ -12,7 +11,6 @@ const Card = ({ id, title, img, price, onPlus }) => {
 
 	const addToCart = () => {
 		onPlus({ id, title, img, price })
-		setIsAdded(!isAdded)
 	}
 
 	return (
@@ -35,7 +33,7 @@ const Card = ({ id, title, img, price, onPlus }) => {
 					<button className='card__btn'>
 						<img
 							onClick={addToCart}
-							src={isAdded ? './img/btn-added.svg' : './img/btn-plus.svg'}
+							src={onAdded ? './img/btn-added.svg' : './img/btn-plus.svg'}
 							alt='add button'
 						/>
 					</button>

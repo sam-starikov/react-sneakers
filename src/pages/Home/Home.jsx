@@ -5,7 +5,7 @@ import Card from '../../components/Card/Card'
 
 import { useState } from 'react'
 
-const Home = ({ items, addToCart }) => {
+const Home = ({ items, addToCart, cartItems }) => {
 	const [searchValue, setSearchValue] = useState('')
 
 	const onChangeInput = event => {
@@ -50,7 +50,12 @@ const Home = ({ items, addToCart }) => {
 						obj.title.toLowerCase().includes(searchValue.toLowerCase())
 					)
 					.map((obj, inx) => (
-						<Card key={inx} {...obj} onPlus={obj => addToCart(obj)} />
+						<Card
+							key={inx}
+							onPlus={obj => addToCart(obj)}
+							onAdded={cartItems.some(el => el.title === obj.title)}
+							{...obj}
+						/>
 					))}
 			</div>
 		</div>

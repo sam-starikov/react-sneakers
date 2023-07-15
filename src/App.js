@@ -16,11 +16,15 @@ function App() {
 	}
 
 	const addToCart = obj => {
-		setCartItems(prev => [...prev, obj])
+		if (cartItems.find(el => el.title === obj.title)) {
+			setCartItems(prev => prev.filter(el => el.title !== obj.title))
+		} else {
+			setCartItems(prev => [...prev, obj])
+		}
 	}
 
 	const deleteItemToCart = id => {
-		setCartItems(cartItems.filter(obj => obj.id !== id))
+		setCartItems(prev => prev.filter(obj => obj.id !== id))
 	}
 
 	const totalAmount = cartItems.reduce((prev, obj) => prev + obj.price, 0)
@@ -43,7 +47,7 @@ function App() {
 					/>
 				)}
 				<Header openCart={openCart} totalAmount={totalAmount} />
-				<Home addToCart={addToCart} items={items} />
+				<Home addToCart={addToCart} items={items} cartItems={cartItems} />
 			</div>
 		</>
 	)
