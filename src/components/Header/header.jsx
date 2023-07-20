@@ -1,11 +1,15 @@
 import './header.css'
 
+import { Link } from 'react-router-dom'
+
 const Header = ({ openCart, totalAmount }) => {
 	return (
 		<header className='header'>
 			<div className='header__container container'>
 				<div className='header__logo-section'>
-					<img className='header__logo' src='./img/logo.svg' alt='logo' />
+					<Link to='/'>
+						<img className='header__logo' src='./img/logo.svg' alt='logo' />
+					</Link>
 					<div className='header__title-block'>
 						<h3 className='header__title'>REACT SNEAKERS</h3>
 						<p className='header__sub-title'>Магазин лучших кроссовок</p>
@@ -19,11 +23,13 @@ const Header = ({ openCart, totalAmount }) => {
 							<span className='menu__price'>{totalAmount} руб.</span>
 						</li>
 						<li className='menu__item'>
-							<img
-								className='menu__icon'
-								src='./img/favorite.svg'
-								alt='favorite'
-							/>
+							<Link to='/favorites'>
+								<img
+									className='menu__icon'
+									src='./img/favorite.svg'
+									alt='favorite'
+								/>
+							</Link>
 						</li>
 						<li className='menu__item'>
 							<img className='menu__icon' src='./img/user.svg' alt='user' />

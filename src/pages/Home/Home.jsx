@@ -1,11 +1,12 @@
 import './home.css'
 
-import Slider from '../../components/Slider/Slider'
-import Card from '../../components/Card/Card'
-
 import { useState } from 'react'
 
-const Home = ({ items, addToCart, cartItems }) => {
+import Slider from '../../components/Slider/Slider'
+import Card from '../../components/Card/Card'
+import Skeleton from '../../components/Skeleton/Skeleton'
+
+const Home = ({ items, addToCart, cartItems, isLoading }) => {
 	const [searchValue, setSearchValue] = useState('')
 
 	const onChangeInput = event => {
@@ -45,18 +46,20 @@ const Home = ({ items, addToCart, cartItems }) => {
 				</div>
 			</div>
 			<div className='home__content'>
-				{items
-					.filter(obj =>
-						obj.title.toLowerCase().includes(searchValue.toLowerCase())
-					)
-					.map((obj, inx) => (
-						<Card
-							key={inx}
-							onPlus={obj => addToCart(obj)}
-							onAdded={cartItems.some(el => el.title === obj.title)}
-							{...obj}
-						/>
-					))}
+				{isLoading
+					? [...Array(8)].map((_, i) => <Skeleton key={i} />)
+					: items
+							.filter(obj =>
+								obj.title.toLowerCase().includes(searchValue.toLowerCase())
+							)
+							.map((obj, inx) => (
+								<Card
+									key={`${obj.id}_${inx}`}
+									onPlus={obj => addToCart(obj)}
+									onAdded={cartItems.some(el => el.title === obj.title)}
+									{...obj}
+								/>
+							))}
 			</div>
 		</div>
 	)

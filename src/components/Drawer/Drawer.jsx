@@ -20,7 +20,7 @@ function Drawer({ items = [], totalAmount, onDelete, onClose }) {
 				</div>
 				<div className='cart__container'>
 					{items.map((el, i) => (
-						<div className='cart__item item' key={i}>
+						<div className='cart__item item' key={`${el.id}_${i}`}>
 							<img
 								className='item__image'
 								src={el.img}

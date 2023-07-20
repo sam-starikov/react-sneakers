@@ -2,7 +2,7 @@ import './card.css'
 
 import { useState } from 'react'
 
-const Card = ({ id, title, img, price, onPlus, onAdded = false }) => {
+const Card = ({ id, title, img, price, onPlus, onAdded }) => {
 	const [isFavorite, setIsFavorite] = useState(false)
 
 	const onFavorite = () => {
