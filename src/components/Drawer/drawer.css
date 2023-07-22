@@ -18,7 +18,7 @@
 	height: 100%;
 	top: 0;
 	right: 0;
-	padding: 30px;
+	padding: 25px;
 	background-color: #fff;
 	box-shadow: -20px 4px 40px 0px rgba(0, 0, 0, 0.2);
 }
@@ -47,6 +47,17 @@
 	gap: 15px;
 	margin-bottom: 20px;
 	overflow: auto;
+}
+
+.cart__container_empty {
+	justify-content: center;
+}
+
+.cart__empty {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 35px;
 }
 
 .cart__price-section {
@@ -91,7 +102,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 325px;
+	width: 340px;
 	height: 119px;
 	padding: 10px;
 	border-radius: 20px;

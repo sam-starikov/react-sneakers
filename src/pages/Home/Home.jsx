@@ -6,7 +6,15 @@ import Slider from '../../components/Slider/Slider'
 import Card from '../../components/Card/Card'
 import Skeleton from '../../components/Skeleton/Skeleton'
 
-const Home = ({ items, addToCart, cartItems, isLoading }) => {
+const Home = ({
+	items = [],
+	cartItems = [],
+	favoritesItems = [],
+	addToCart,
+	addToFavorites,
+	isLoading,
+}) => {
+
 	const [searchValue, setSearchValue] = useState('')
 
 	const onChangeInput = event => {
@@ -52,11 +60,15 @@ const Home = ({ items, addToCart, cartItems, isLoading }) => {
 							.filter(obj =>
 								obj.title.toLowerCase().includes(searchValue.toLowerCase())
 							)
-							.map((obj, inx) => (
+							.map(obj => (
 								<Card
-									key={`${obj.id}_${inx}`}
+									key={obj.id}
 									onPlus={obj => addToCart(obj)}
-									onAdded={cartItems.some(el => el.title === obj.title)}
+									onFavorite={obj => addToFavorites(obj)}
+									isAdded={cartItems.some(el => el.title === obj.title)}
+									isFavorited={favoritesItems.some(
+										el => el.title === obj.title
+									)}
 									{...obj}
 								/>
 							))}

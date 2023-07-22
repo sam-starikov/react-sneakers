@@ -28,13 +28,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-}
-
-.menu__list :not(:last-child) {
-	margin-right: 30px;
+	gap: 30px;
 }
 
 .menu__item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
 	cursor: pointer;
 }
 
@@ -47,4 +47,27 @@
 	height: 1px;
 	margin-bottom: 46px;
 	background-color: #eaeaea;
+}
+
+/* ICONS*/
+
+.icon-like path {
+	fill: #9dd458;
+}
+
+.icon-like_animation path {
+	animation: animation 1s infinite alternate;
+}
+
+@keyframes animation {
+	from {
+		fill: #fc7575;
+	}
+	to {
+		fill: #ff858500;
+	}
+}
+
+.icon-cart_theme_green path {
+	stroke: #9dd458;
 }

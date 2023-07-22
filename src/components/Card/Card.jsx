@@ -2,23 +2,33 @@ import './card.css'
 
 import { useState } from 'react'
 
-const Card = ({ id, title, img, price, onPlus, onAdded }) => {
-	const [isFavorite, setIsFavorite] = useState(false)
+const Card = ({
+	id,
+	title,
+	img,
+	price,
+	onPlus,
+	onFavorite,
+	isAdded,
+	isFavorited,
+}) => {
+	const [isFavorite, setIsFavorite] = useState(isFavorited)
 
-	const onFavorite = () => {
-		setIsFavorite(!isFavorite)
+	const onClicToPlus = () => {
+		onPlus({ id, title, img, price })
 	}
 
-	const addToCart = () => {
-		onPlus({ id, title, img, price })
+	const onClickToFavorite = () => {
+		onFavorite({ id, title, img, price })
+		setIsFavorite(!isFavorite)
 	}
 
 	return (
 		<div className='card'>
 			<div className='card__container'>
 				<img
-					onClick={onFavorite}
 					className='card__like'
+					onClick={onClickToFavorite}
 					height={40}
 					src={isFavorite ? './img/liked.svg' : './img/unliked.svg'}
 					alt='like'
@@ -32,8 +42,8 @@ const Card = ({ id, title, img, price, onPlus, onAdded }) => {
 					</div>
 					<button className='card__btn'>
 						<img
-							onClick={addToCart}
-							src={onAdded ? './img/btn-added.svg' : './img/btn-plus.svg'}
+							onClick={onClicToPlus}
+							src={isAdded ? './img/btn-added.svg' : './img/btn-plus.svg'}
 							alt='add button'
 						/>
 					</button>
