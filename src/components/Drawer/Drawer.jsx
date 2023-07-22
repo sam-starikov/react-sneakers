@@ -1,6 +1,12 @@
+import { useContext } from 'react'
+
+import { AppContex } from '../../App'
+
 import './drawer.css'
 
-function Drawer({ cartItems = [], totalAmount, onDelete, onClose }) {
+function Drawer({ onDelete, onClose }) {
+	const { totalAmount, cartItems } = useContext(AppContex)
+
 	const calcPercent = Math.round((totalAmount / 100) * 5)
 
 	return (

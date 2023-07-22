@@ -1,12 +1,15 @@
 import './index.css'
 
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import Header from './components/Header/Header'
-import Home from './pages/Home/Home'
 import Drawer from './components/Drawer/Drawer'
+
+import Home from './pages/Home/Home'
 import Favorites from './pages/Favortes/Favorites'
+
+export const AppContex = createContext({})
 
 function App() {
 	const [items, setItems] = useState([])
@@ -51,30 +54,21 @@ function App() {
 	const totalAmount = cartItems.reduce((prev, obj) => prev + obj.price, 0)
 
 	return (
-		<>
+		<AppContex.Provider value={{ totalAmount, cartItems, favoritesItems }}>
 			<div className='wrapper'>
 				{cartOpened && (
 					<Drawer
-						cartItems={cartItems}
 						onClose={() => setCartOpened(false)}
 						onDelete={deleteItemToCart}
-						totalAmount={totalAmount}
 					/>
 				)}
-				<Header
-					cartItems={cartItems}
-					favoritesItems={favoritesItems}
-					openCart={openCart}
-					totalAmount={totalAmount}
-				/>
+				<Header openCart={openCart} />
 				<Routes>
 					<Route
 						path='/'
 						element={
 							<Home
-								items={items}
-								cartItems={cartItems}
-								favoritesItems={favoritesItems}
+								goods={items}
 								addToCart={addToCart}
 								addToFavorites={addToFavorites}
 								isLoading={isLoading}
@@ -85,8 +79,6 @@ function App() {
 						path='/favorites'
 						element={
 							<Favorites
-								favoritesItems={favoritesItems}
-								cartItems={cartItems}
 								addToCart={addToCart}
 								addToFavorites={addToFavorites}
 								isLoading={isLoading}
@@ -95,7 +87,7 @@ function App() {
 					/>
 				</Routes>
 			</div>
-		</>
+		</AppContex.Provider>
 	)
 }
 

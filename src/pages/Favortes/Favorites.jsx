@@ -5,14 +5,12 @@ import Card from '../../components/Card/Card'
 import Slider from '../../components/Slider/Slider'
 
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AppContex } from '../../App'
 
-function Favorites({
-	favoritesItems = [],
-	cartItems = [],
-	addToCart,
-	addToFavorites,
-	isLoading,
-}) {
+function Favorites({ addToCart, addToFavorites, isLoading }) {
+	const { cartItems, favoritesItems } = useContext(AppContex)
+
 	return (
 		<div className='favorites container'>
 			<Slider />

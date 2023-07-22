@@ -1,8 +1,13 @@
 import './header.css'
 
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-const Header = ({ cartItems, favoritesItems, openCart, totalAmount }) => {
+import { AppContex } from '../../App'
+
+const Header = ({ openCart }) => {
+	const { totalAmount, cartItems, favoritesItems } = useContext(AppContex)
+
 	return (
 		<header className='header'>
 			<div className='header__container container'>
@@ -21,7 +26,7 @@ const Header = ({ cartItems, favoritesItems, openCart, totalAmount }) => {
 						<li className='menu__item' onClick={openCart}>
 							<svg
 								className={
-									!cartItems.length ? 'icon-cart' : 'icon-cart_theme_green'
+									cartItems.length ? 'icon-cart_theme_green' : 'icon-cart'
 								}
 								xmlns='http://www.w3.org/2000/svg'
 								width='27'

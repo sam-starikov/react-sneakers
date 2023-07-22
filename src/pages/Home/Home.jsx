@@ -1,21 +1,16 @@
 import './home.css'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+
+import { AppContex } from '../../App'
 
 import Slider from '../../components/Slider/Slider'
 import Card from '../../components/Card/Card'
 import Skeleton from '../../components/Skeleton/Skeleton'
 
-const Home = ({
-	items = [],
-	cartItems = [],
-	favoritesItems = [],
-	addToCart,
-	addToFavorites,
-	isLoading,
-}) => {
-
+const Home = ({ goods = [], addToCart, addToFavorites, isLoading }) => {
 	const [searchValue, setSearchValue] = useState('')
+	const { cartItems, favoritesItems } = useContext(AppContex)
 
 	const onChangeInput = event => {
 		setSearchValue(event.target.value)
@@ -56,7 +51,7 @@ const Home = ({
 			<div className='home__content'>
 				{isLoading
 					? [...Array(8)].map((_, i) => <Skeleton key={i} />)
-					: items
+					: goods
 							.filter(obj =>
 								obj.title.toLowerCase().includes(searchValue.toLowerCase())
 							)
