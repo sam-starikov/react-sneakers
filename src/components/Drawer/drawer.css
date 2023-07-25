@@ -90,12 +90,31 @@
 }
 
 .cart__btn-order {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
 	height: 55px;
 	border-radius: 18px;
 	background: #9dd458;
 	color: #fff;
 	font-size: 16px;
 	font-weight: 600;
+	transition: box-shadow 0.6s ease-in-out;
+}
+
+.cart__btn-order:hover {
+	box-shadow: 0px 0px 15px 1px #bebebe;
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.cart__btn-order img {
+	transition: transform 0.6s ease-in-out;
+}
+
+.cart__btn-order:hover img {
+	transform: translateX(20px);
+	transition: transform 0.3s ease-in-out;
 }
 
 .item {

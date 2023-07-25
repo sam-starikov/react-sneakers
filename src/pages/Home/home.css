@@ -13,11 +13,6 @@
 	margin-bottom: 40px;
 }
 
-.home__title {
-	font-size: 32px;
-	font-weight: 700;
-}
-
 .home__search {
 	position: relative;
 	display: flex;

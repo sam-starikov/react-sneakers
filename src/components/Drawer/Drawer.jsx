@@ -1,8 +1,9 @@
-import { useContext } from 'react'
+import './drawer.css'
 
+import { useContext } from 'react'
 import { AppContex } from '../../App'
 
-import './drawer.css'
+import Info from '../Info/Info'
 
 function Drawer({ onDelete, onClose }) {
 	const { totalAmount, cartItems } = useContext(AppContex)
@@ -32,13 +33,14 @@ function Drawer({ onDelete, onClose }) {
 								: 'cart__container cart__container_empty '
 						}>
 						{!cartItems.length ? (
-							<div className='cart__empty'>
-								<img src='img/empty-cart.jpg' alt='empty-cart' />
-								<div className='cart__empty__btn btn' onClick={onClose}>
-									<img height={17} src='img/arrow-back.svg' alt='arrow-back' />
-									Вернуться назад
-								</div>
-							</div>
+							<Info
+								title={'Корзина пустая'}
+								desc={
+									'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'
+								}
+								img={'img/empty-cart.jpg'}
+								onClose={onClose}
+							/>
 						) : (
 							cartItems.map((el, i) => (
 								<div className='cart__item item' key={`${el.id}_${i}`}>
@@ -78,8 +80,8 @@ function Drawer({ onDelete, onClose }) {
 								<b>{calcPercent} р.</b>
 							</li>
 							<button className='cart__btn-order'>
-								<span> Оформить заказ</span>
-								<img src='./img/arrow.svg' alt='arrow' />
+								Оформить заказ
+								<img height={20} src='./img/arrow.svg' alt='arrow' />
 							</button>
 						</ul>
 					)}

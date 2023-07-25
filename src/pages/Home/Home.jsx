@@ -10,19 +10,22 @@ import Skeleton from '../../components/Skeleton/Skeleton'
 
 const Home = ({ goods = [], addToCart, addToFavorites, isLoading }) => {
 	const [searchValue, setSearchValue] = useState('')
-	const { cartItems, favoritesItems } = useContext(AppContex)
+	const { cartItems, favoritesItems, checkIsAddedItem } = useContext(AppContex)
 
 	const onChangeInput = event => {
 		setSearchValue(event.target.value)
 	}
+	const filteredItems = goods.filter(obj =>
+		obj.title.toLowerCase().includes(searchValue.toLowerCase())
+	)
 
 	return (
 		<div className='home container'>
 			<Slider />
 			<div className='home__top-section'>
-				<h1 className='home__title'>
+				<h1 className='home__title title'>
 					{searchValue
-						? `По запросу '${searchValue}' найденно ${items.length} шт.`
+						? `По запросу '${searchValue}' найденно ${filteredItems.length} шт.`
 						: 'Все кроссовки'}
 				</h1>
 				<div className='home__search search'>
@@ -51,22 +54,16 @@ const Home = ({ goods = [], addToCart, addToFavorites, isLoading }) => {
 			<div className='home__content'>
 				{isLoading
 					? [...Array(8)].map((_, i) => <Skeleton key={i} />)
-					: goods
-							.filter(obj =>
-								obj.title.toLowerCase().includes(searchValue.toLowerCase())
-							)
-							.map(obj => (
-								<Card
-									key={obj.id}
-									onPlus={obj => addToCart(obj)}
-									onFavorite={obj => addToFavorites(obj)}
-									isAdded={cartItems.some(el => el.title === obj.title)}
-									isFavorited={favoritesItems.some(
-										el => el.title === obj.title
-									)}
-									{...obj}
-								/>
-							))}
+					: filteredItems.map(obj => (
+							<Card
+								key={obj.id}
+								onPlus={obj => addToCart(obj)}
+								onFavorite={obj => addToFavorites(obj)}
+								isAdded={checkIsAddedItem(cartItems, obj)}
+								isFavorited={checkIsAddedItem(favoritesItems, obj)}
+								{...obj}
+							/>
+					  ))}
 			</div>
 		</div>
 	)

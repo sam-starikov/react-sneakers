@@ -1,4 +1,4 @@
-import './favorites.css'
+import '../Favortes/favorites.css'
 
 import Skeleton from '../../components/Skeleton/Skeleton'
 import Card from '../../components/Card/Card'
@@ -8,21 +8,21 @@ import Info from '../../components/Info/Info'
 import { useContext } from 'react'
 import { AppContex } from '../../App'
 
-function Favorites({ addToCart, addToFavorites, isLoading }) {
+function Orders({ addToCart, addToFavorites, isLoading }) {
 	const { cartItems, favoritesItems, checkIsAddedItem } = useContext(AppContex)
 
 	return (
 		<div className='favorites container'>
 			<Slider />
-			<h1 className='favorites__title title'>Мои закладки</h1>
+			<h1 className='favorites__title title'>Мои заказы</h1>
 			<div className='favorites__content'>
 				{isLoading ? (
 					[...Array(8)].map((_, i) => <Skeleton key={i} />)
 				) : !favoritesItems.length ? (
 					<Info
-						title={'Закладок нет :('}
-						desc={'Вы ничего не добавляли в закладки'}
-						img={'img/empty-favorites.jpg'}
+						title={'У вас нет заказов'}
+						desc={'Вы нищеброд? Оформите хотя бы один заказ.'}
+						img={'img/empty-orders.jpg'}
 					/>
 				) : (
 					favoritesItems.map(obj => (
@@ -41,4 +41,4 @@ function Favorites({ addToCart, addToFavorites, isLoading }) {
 	)
 }
 
-export default Favorites
+export default Orders

@@ -8,6 +8,7 @@ import Drawer from './components/Drawer/Drawer'
 
 import Home from './pages/Home/Home'
 import Favorites from './pages/Favortes/Favorites'
+import Orders from './pages/Orders/Orders'
 
 export const AppContex = createContext({})
 
@@ -51,10 +52,15 @@ function App() {
 		setCartItems(prev => prev.filter(obj => obj.id !== id))
 	}
 
+	const checkIsAddedItem = (arr, obj) => {
+		return arr.some(el => el.title === obj.title)
+	}
+
 	const totalAmount = cartItems.reduce((prev, obj) => prev + obj.price, 0)
 
 	return (
-		<AppContex.Provider value={{ totalAmount, cartItems, favoritesItems }}>
+		<AppContex.Provider
+			value={{ totalAmount, cartItems, favoritesItems, checkIsAddedItem }}>
 			<div className='wrapper'>
 				{cartOpened && (
 					<Drawer
@@ -85,6 +91,7 @@ function App() {
 							/>
 						}
 					/>
+					<Route path='/orders' element={<Orders isLoading={isLoading} />} />
 				</Routes>
 			</div>
 		</AppContex.Provider>
