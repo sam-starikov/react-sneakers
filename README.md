@@ -2,9 +2,9 @@
 
 **Stack:**
 
--   ReactJS + React Hooks
--   React Router
--   Axios
--   React Context
--   React Skeleton
--   BEM
+- ReactJS + React Hooks
+- BEM (CSS)
+- React Router(SPA)
+- Axios
+- React Skeleton
+- React Slick Slider
