@@ -119,9 +119,6 @@ h6 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 15px;
-	width: 245px;
-	height: 55px;
 	border-radius: 18px;
 	background: #9dd458;
 	color: #fff;

@@ -1,8 +1,8 @@
-import '../Favortes/favorites.css'
+import '../Favorites/favorites.css'
 
 import Skeleton from '../../components/Skeleton/Skeleton'
 import Card from '../../components/Card/Card'
-import Slider from '../../components/Slider/Slider'
+import Slider from '../../components/Slider/MySlider'
 import Info from '../../components/Info/Info'
 
 import { useContext } from 'react'

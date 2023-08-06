@@ -58,10 +58,12 @@ function Drawer({ onDelete, onClose }) {
 									<img
 										className='cart__remove-btn'
 										src='./img/btn-remove.svg'
-										alt='remove'
+										alt='remove button'
 										width={32}
 										height={32}
-										onClick={() => onDelete(el.id)}
+										onClick={() => {
+											onDelete(el.id)
+										}}
 									/>
 								</div>
 							))

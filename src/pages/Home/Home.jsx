@@ -4,9 +4,7 @@ import { useContext, useState } from 'react'
 
 import { AppContex } from '../../App'
 
-import Slider from '../../components/Slider/Slider'
-import Card from '../../components/Card/Card'
-import Skeleton from '../../components/Skeleton/Skeleton'
+import { Card, Skeleton, SimpleSlider } from '../../components/imports'
 
 const Home = ({ goods = [], addToCart, addToFavorites, isLoading }) => {
 	const [searchValue, setSearchValue] = useState('')
@@ -21,7 +19,7 @@ const Home = ({ goods = [], addToCart, addToFavorites, isLoading }) => {
 
 	return (
 		<div className='home container'>
-			<Slider />
+			<SimpleSlider />
 			<div className='home__top-section'>
 				<h1 className='home__title title'>
 					{searchValue
@@ -56,7 +54,7 @@ const Home = ({ goods = [], addToCart, addToFavorites, isLoading }) => {
 					? [...Array(8)].map((_, i) => <Skeleton key={i} />)
 					: filteredItems.map(obj => (
 							<Card
-								key={obj.id}
+								key={obj._id}
 								onPlus={obj => addToCart(obj)}
 								onFavorite={obj => addToFavorites(obj)}
 								isAdded={checkIsAddedItem(cartItems, obj)}

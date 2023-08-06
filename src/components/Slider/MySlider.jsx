@@ -1,6 +1,6 @@
 import './slider.css'
 
-const Slider = () => {
+const MySlider = () => {
 	return (
 		<div className='home__slider slider'>
 			<div className='slider__container '>
@@ -9,7 +9,7 @@ const Slider = () => {
 						<img src='./img/slider-logo.jpg' alt='logo' />
 					</div>
 					<h3 className='slider__title'>
-						<span>Stan Smith</span>,
+						<span>Sam Smith</span>,
 						<br />
 						Forever!
 					</h3>
@@ -30,4 +30,4 @@ const Slider = () => {
 	)
 }
 
-export default Slider
+export default MySlider

@@ -1,7 +1,7 @@
 import './card.css'
 
 const Card = ({
-	id,
+	_id,
 	title,
 	img,
 	price,
@@ -11,11 +11,11 @@ const Card = ({
 	isFavorited,
 }) => {
 	const onClicToPlus = () => {
-		onPlus({ id, title, img, price })
+		onPlus({ _id, title, img, price })
 	}
 
 	const onClickToFavorite = () => {
-		onFavorite({ id, title, img, price })
+		onFavorite({ _id, title, img, price })
 	}
 
 	return (
@@ -30,18 +30,18 @@ const Card = ({
 				/>
 				<img className='card__img' height={112} src={img} alt='sneakers' />
 				<h3 className='card__title'>{title}</h3>
-				<div className='card__bottom-section'>
-					<div className='card__price'>
-						<p>Цена:</p>
-						<b>{price}p.</b>
-					</div>
-					<div className='card__btn'>
-						<img
-							onClick={onClicToPlus}
-							src={isAdded ? './img/btn-added.svg' : './img/btn-plus.svg'}
-							alt='add button'
-						/>
-					</div>
+			</div>
+			<div className='card__bottom-section'>
+				<div className='card__price'>
+					<p>Цена:</p>
+					<b>{price}p.</b>
+				</div>
+				<div className='card__btn'>
+					<img
+						onClick={onClicToPlus}
+						src={isAdded ? './img/btn-added.svg' : './img/btn-plus.svg'}
+						alt='add button'
+					/>
 				</div>
 			</div>
 		</div>

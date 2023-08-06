@@ -3,12 +3,7 @@ import './index.css'
 import { createContext, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import Header from './components/Header/Header'
-import Drawer from './components/Drawer/Drawer'
-
-import Home from './pages/Home/Home'
-import Favorites from './pages/Favortes/Favorites'
-import Orders from './pages/Orders/Orders'
+import { Header, Drawer, Home, Favorites, Orders } from './components/imports'
 
 export const AppContex = createContext({})
 
@@ -26,6 +21,11 @@ function App() {
 				setItems(data)
 				setIsLoading(false)
 			})
+		fetch('https://649009021e6aa71680ca6400.mockapi.io/cart')
+			.then(responce => responce.json())
+			.then(data => {
+				setCartItems(data)
+			})
 	}, [])
 
 	const openCart = () => {
@@ -33,10 +33,15 @@ function App() {
 	}
 
 	const addToCart = obj => {
-		if (cartItems.find(el => el.title === obj.title)) {
+		if (cartItems.find(el => el._id === obj._id)) {
 			setCartItems(prev => prev.filter(el => el.title !== obj.title))
 		} else {
 			setCartItems(prev => [...prev, obj])
+			fetch('https://649009021e6aa71680ca6400.mockapi.io/cart', {
+				method: 'POST',
+				headers: { 'content-type': 'application/json' },
+				body: JSON.stringify(obj),
+			})
 		}
 	}
 
@@ -50,6 +55,9 @@ function App() {
 
 	const deleteItemToCart = id => {
 		setCartItems(prev => prev.filter(obj => obj.id !== id))
+		// fetch(`https://649009021e6aa71680ca6400.mockapi.io/cart/${id}`, {
+		// 	method: 'DELETE',
+		// })
 	}
 
 	const checkIsAddedItem = (arr, obj) => {
