@@ -1,4 +1,4 @@
-Интернет-магазин кроссовок - **React Sneakers**
+Интернет-магазин - **React Sneakers**
 
 **Stack:**
 
